@@ -156,6 +156,8 @@ button{font:inherit;color:inherit;cursor:pointer}
 @keyframes gpa{0%{transform:translateX(-50%) scale(1);opacity:1}60%{transform:translateX(-50%) scale(1.28);opacity:1}82%{transform:translateX(-50%) scale(1.48);opacity:.55}100%{transform:translateX(-50%) scale(1.6);opacity:0}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 @media(min-width:700px){.panel{max-height:34vh}}
+.nl .ord{display:block;font-size:11px;color:var(--gold);letter-spacing:.04em;line-height:1.2;margin-bottom:2px;font-family:'Noto Sans Tamil',Inter,system-ui,sans-serif;font-weight:400;opacity:.9}
+.tv-ord{display:block;text-align:center;font-size:clamp(13px,3.5vw,16px);color:var(--gold);letter-spacing:.06em;font-family:'Noto Sans Tamil',Inter,system-ui,sans-serif;font-weight:400;margin:0 0 6px;line-height:1.3}
 </style></head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="vg" x1="0" x2="1"><stop offset="0" stop-color="#f6d98f"/><stop offset="1" stop-color="#b7832f"/></linearGradient></defs></svg>
@@ -393,12 +395,12 @@ const T=[
  {ta:'திருப்பரங்குன்றம்',en:'Thirupparankundram',loc:'Near Madurai, Tamil Nadu',pos:[28,7],img:'tpk',d:'tpk',scene:cave,
   desc:'A hill shrine near Madurai, associated with the marriage of Murugan and Deivanai.',
   fact:'The sanctum here is cut into the rock of the hill itself — a rock-cut cave temple.',hint:'Tap or swipe toward the cave'},
- {ta:'பழனி',en:'Palani',loc:'Dindigul district, Tamil Nadu',pos:[72,23],img:'palani',d:'palani',scene:palani,
-  desc:'A hilltop shrine where Murugan is worshipped as Dandayudhapani, the ascetic holding a staff.',
-  fact:'Pilgrims can climb the steps, or ride a winch train or the ropeway up the hill.',hint:'Watch the rope car · or drag it'},
  {ta:'திருச்செந்தூர்',en:'Tiruchendur',loc:'Thoothukudi district, Tamil Nadu',pos:[28,39],img:'chen',d:'chen',scene:sea,
   desc:'Murugan’s shrine on the seashore, associated with his victory over the asura Surapadman.',
   fact:'It is the only one of the six abodes on the seashore — the other five stand on hills.',hint:'Drag across the sea'},
+ {ta:'பழனி',en:'Palani',loc:'Dindigul district, Tamil Nadu',pos:[72,23],img:'palani',d:'palani',scene:palani,
+  desc:'A hilltop shrine where Murugan is worshipped as Dandayudhapani, the ascetic holding a staff.',
+  fact:'Pilgrims can climb the steps, or ride a winch train or the ropeway up the hill.',hint:'Watch the rope car · or drag it'},
  {ta:'சுவாமிமலை',en:'Swamimalai',loc:'Near Kumbakonam, Tamil Nadu',pos:[72,55],img:'swami',d:'swami',
   scene:climb({img:'swami',gw:200,N:60,yrs:1,tap:1,sky:'#3a2414,#a8693a',hill:'#2a1a10',wall:'#3b2a1c',tread:'#c9a974'}),
   desc:'Here Murugan is worshipped as Swaminatha, who is said to have taught the meaning of Om to Shiva.',
@@ -412,6 +414,7 @@ const T=[
   fact:'The name means “grove of ripe fruits”.',hint:'Brush the leaves · find the hidden path'}
 ];
 
+const ORDINALS=['முதலாம் படை வீடு','இரண்டாம் படை வீடு','மூன்றாம் படை வீடு','நான்காம் படை வீடு','ஐந்தாம் படை வீடு','ஆறாம் படை வீடு'];
 /* ============ UI: landing, journey map, temple view, final ============ */
 const explored=new Set();let cur=null,finShown=false,clean=[];
 
@@ -429,7 +432,7 @@ const explored=new Set();let cur=null,finShown=false,clean=[];
   map.innerHTML=`<svg viewBox="0 0 100 200" preserveAspectRatio="none" aria-hidden="true"><path d="${d}" fill="none" stroke="#e0b45c" stroke-width="2.5" stroke-dasharray="2 7" stroke-linecap="round" vector-effect="non-scaling-stroke" opacity=".6"/></svg>`;
   T.forEach((t,i)=>{const b=document.createElement('button');b.className='node';b.id='n'+i;b.style.left=t.pos[0]+'%';b.style.top=t.pos[1]+'%';
     b.setAttribute('aria-label',`${t.en}. Tap to explore.`);
-    b.innerHTML=`<img class="gm" alt="" decoding="async" src="${IMG[t.img].src}"><span class="nl"><b class="ta" lang="ta">${t.ta}</b><i>${t.en}<em class="cm" aria-label="explored"> ✓</em></i></span>`;
+    b.innerHTML=`<img class="gm" alt="" decoding="async" src="${IMG[t.img].src}"><span class="nl"><em class="ord ta" lang="ta" aria-label="${ORDINALS[i]}">${ORDINALS[i]}</em><b class="ta" lang="ta">${t.ta}</b><i>${t.en}<em class="cm" aria-label="explored"> ✓</em></i></span>`;
     b.onclick=e=>openT(i,b);map.append(b)});
   $('#fbtn').onclick=showFinal;
 })();
@@ -444,7 +447,7 @@ function updateProgress(){
 function openT(i,origin,rep){
   const t=T[i],v=$('#tv'),last=i===T.length-1;cur=i;rep?history.replaceState({v:'t'},''):history.pushState({v:'t'},'');
   v.className='scr';v.scrollTop=0;
-  v.innerHTML=`<div class="pg1"><div class="bar"><button class="bk" aria-label="Back to the journey">←</button><div class="bi"><div class="ta tt" lang="ta">${t.ta}</div><div class="en">${t.en}</div></div><div class="bt"><button class="z" id="zo" aria-label="Zoom out">−</button><button class="z" id="zi" aria-label="Zoom in">+</button><button id="mu" aria-label="Mute or unmute the temple bell">${muted?'🔕':'🔔'}</button></div></div><div class="stage"><div class="hint">☝ ${t.hint}</div></div><div class="ctl" role="group" aria-label="Alternative controls"></div></div><section class="cont" aria-label="Continue"></section>`;
+  v.innerHTML=`<div class="pg1"><div class="bar"><button class="bk" aria-label="Back to the journey">←</button><div class="bi"><div class="tv-ord ta" lang="ta">${ORDINALS[i]}</div><div class="ta tt" lang="ta">${t.ta}</div><div class="en">${t.en}</div></div><div class="bt"><button class="z" id="zo" aria-label="Zoom out">−</button><button class="z" id="zi" aria-label="Zoom in">+</button><button id="mu" aria-label="Mute or unmute the temple bell">${muted?'🔕':'🔔'}</button></div></div><div class="stage"><div class="hint">☝ ${t.hint}</div></div><div class="ctl" role="group" aria-label="Alternative controls"></div></div><section class="cont" aria-label="Continue"></section>`;
   v.style.display='flex';
   if(!RM&&origin){const r=origin.getBoundingClientRect(),x=r.left+r.width/2,y=r.top+34,R=Math.hypot(innerWidth,innerHeight);
     v.animate([{clipPath:`circle(0px at ${x}px ${y}px)`},{clipPath:`circle(${R}px at ${x}px ${y}px)`}],{duration:650,easing:'cubic-bezier(.2,.8,.2,1)'})}
@@ -453,9 +456,9 @@ function openT(i,origin,rep){
   const stg=$('.stage',v),hint=$('.hint',v);clean=[];const pre=new Image();pre.src=D[t.d];let arrived=false;
   const stopScene=()=>{clean.forEach(f=>f());clean.length=0;stg.onpointerdown=stg.onpointermove=stg.onpointerup=stg.onpointercancel=null};
   const done=()=>{explored.add(i);updateProgress();v.classList.add('viewing');
-    const nxt=last?(explored.size===T.length?['COMPLETE THE JOURNEY','']:null):['CONTINUE THE JOURNEY →','NEXT: '+T[i+1].en.toUpperCase()];
+    const nxt=i<T.length-1?['CONTINUE THE JOURNEY →','NEXT: '+T[i+1].en.toUpperCase()]:null;
     $('.cont',v).innerHTML=`<div class="loc">📍 ${t.loc}</div><h2 class="ta" lang="ta">${t.ta}</h2><p>${t.desc}</p><p class="fact"><b>✦ DID YOU KNOW</b>${t.fact}</p>${nxt?`<button class="cta" id="nxt"><span>${nxt[0]}</span>${nxt[1]?`<small>${nxt[1]}</small>`:''}</button>`:''}<button class="cta sm ghost" id="rtj">RETURN TO JOURNEY</button>`;
-    const n=$('#nxt',v);if(n)n.onclick=()=>last?showFinal():goNext(i+1);$('#rtj',v).onclick=()=>history.back()};
+    const n=$('#nxt',v);if(n)n.onclick=()=>goNext(i+1);$('#rtj',v).onclick=()=>history.back()};
   const api={onClose:clean,arrived:false,
     touch(){hint.classList.add('gone')},
     later(f,ms){const h=setTimeout(f,ms);clean.push(()=>clearTimeout(h))},
