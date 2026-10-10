@@ -127,11 +127,6 @@ button{font:inherit;color:inherit;cursor:pointer}
 .glow{position:absolute;inset:0;opacity:0;pointer-events:none;mix-blend-mode:screen;background:radial-gradient(ellipse 46% 40% at 50% 64%,rgba(255,168,76,.3),transparent 70%);transition:opacity 2.5s;animation:lamp 1.7s ease-in-out infinite alternate}
 .sn.lit .glow{opacity:.5}.sn.full .glow{opacity:.8}
 @keyframes lamp{0%{filter:brightness(.88)}40%{filter:brightness(1)}65%{filter:brightness(.93)}100%{filter:brightness(1.06)}}
-.smk{position:absolute;inset:0;width:100%;height:100%;opacity:0;pointer-events:none;transition:opacity 2.5s}
-.sn.lit .smk{opacity:.9}.sn.viewing .smk{opacity:.3}
-.smk path{fill:none;stroke:rgba(255,255,255,.3);stroke-width:1.6;stroke-linecap:round;filter:blur(1.3px);stroke-dasharray:55 160;vector-effect:non-scaling-stroke;animation:rise 9s linear infinite}
-.smk path+path{animation-duration:12s;animation-delay:-5s}
-@keyframes rise{from{stroke-dashoffset:215;opacity:0}15%{opacity:1}to{stroke-dashoffset:-15;opacity:0}}
 .pil{position:absolute;top:-4%;bottom:-4%;width:8%;z-index:3;pointer-events:none;box-shadow:0 0 40px 12px rgba(0,0,0,.85)}
 .pil.l{left:0;transform-origin:0 50%;background:linear-gradient(90deg,#0a0603,#2b1a0e 55%,#100803)}
 .pil.r{right:0;transform-origin:100% 50%;background:linear-gradient(270deg,#0a0603,#2b1a0e 55%,#100803)}
@@ -142,29 +137,17 @@ button{font:inherit;color:inherit;cursor:pointer}
 .gpz{position:absolute;left:50%;bottom:6%;height:76%;max-width:92%;object-fit:contain;transform:translateX(-50%);transform-origin:50% 88%;z-index:5;pointer-events:none}
 .dn{position:absolute;left:50%;bottom:4px;transform:translateX(-50%);z-index:6;font-size:12px;letter-spacing:.18em;color:var(--mute);background:none;border:0;padding:6px 14px;min-height:36px;opacity:0;pointer-events:none;transition:opacity 1.5s}
 .sn.viewing .dn{opacity:.75;pointer-events:auto}
+/* ordinals + sixth-temple return button */
+.od{display:block;font-size:13px;line-height:1.5;letter-spacing:.04em;color:var(--gold);font-weight:600;white-space:nowrap;margin-bottom:1px}
+.cont .ord{font-size:clamp(15px,4.4vw,19px);line-height:1.5;letter-spacing:.05em;color:var(--gold);font-weight:600;margin:16px 0 0}
+.cont .ord+h2{margin-top:2px}
+.cont .cta.up{text-transform:uppercase}
 /* final */
-#fin{display:none;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:32px 24px;overflow-y:auto;background:radial-gradient(ellipse at 50% 70%,#3a1d0d 0,#120a06 52%,#050302 100%);animation:fade 1.6s both}
+#fin{display:none;flex-direction:column;align-items:center;justify-content:flex-start;text-align:center;padding:32px 24px;overflow-y:auto;background:radial-gradient(ellipse at 50% 70%,#3a1d0d 0,#120a06 52%,#050302 100%);animation:fade 1.6s both}
 #fin:before{content:"";position:fixed;inset:0;pointer-events:none;background:radial-gradient(ellipse 40% 30% at 50% 80%,rgba(255,160,70,.2),transparent 70%);animation:lamp 2s ease-in-out infinite alternate}
 #fin>*{position:relative;max-width:560px}
-.fq {
-
-  font-family: "Noto Serif Tamil", "Latha", serif;
-
-  font-size: clamp(22px, 5.5vw, 30px);
-
-  line-height: 1.7;
-
-  font-weight: 600;
-
-  color: var(--gold2);
-
-  margin: 0;
-
-  opacity: 0;
-
-  animation: tamilReveal 2s ease-out 1s both;
-
-}
+#fin>.fq{margin-top:auto}#fin>#again{margin-bottom:auto}
+.fq{font:clamp(16px,4.3vw,22px)/1.85 Marcellus,Georgia,serif;color:var(--ink);margin:0;animation:up 2s 1.4s both}
 .fv{font-size:clamp(26px,8vw,44px);color:var(--gold2);font-weight:700;line-height:1.4;margin:34px 0 8px;animation:up 2s 5s both}
 .fm{color:var(--mute);letter-spacing:.06em;margin:0;animation:up 2s 6.6s both}
 .fa{margin-top:36px;animation:up 2s 8s both}.fa .ta{font-size:clamp(30px,9vw,48px);color:var(--gold2);font-weight:600}.fa small{display:block;letter-spacing:.24em;font-size:12px;color:var(--mute);margin-top:6px}
@@ -174,8 +157,6 @@ button{font:inherit;color:inherit;cursor:pointer}
 @keyframes gpa{0%{transform:translateX(-50%) scale(1);opacity:1}60%{transform:translateX(-50%) scale(1.28);opacity:1}82%{transform:translateX(-50%) scale(1.48);opacity:.55}100%{transform:translateX(-50%) scale(1.6);opacity:0}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 @media(min-width:700px){.panel{max-height:34vh}}
-.nl .ord{display:block;font-size:11px;color:var(--gold);letter-spacing:.04em;line-height:1.2;margin-bottom:2px;font-family:'Noto Sans Tamil',Inter,system-ui,sans-serif;font-weight:400;opacity:.9}
-.tv-ord{display:block;text-align:center;font-size:clamp(13px,3.5vw,16px);color:var(--gold);letter-spacing:.06em;font-family:'Noto Sans Tamil',Inter,system-ui,sans-serif;font-weight:400;margin:0 0 6px;line-height:1.3}
 </style></head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="vg" x1="0" x2="1"><stop offset="0" stop-color="#f6d98f"/><stop offset="1" stop-color="#b7832f"/></linearGradient></defs></svg>
@@ -200,8 +181,7 @@ button{font:inherit;color:inherit;cursor:pointer}
 
 <section class="scr" id="fin" aria-label="Journey complete">
   <p class="fq">You came seeking six sacred abodes.<br>You leave carrying something beyond the journey —<br>courage in your heart, clarity in your path,<br>and faith for the road ahead.</p>
-  <div class="fv ta" lang="ta">வெற்றி வேல் • வீர வேல்</div>
-<p class="fq ta" lang="ta">யாமிருக்க பயமேன்.</p>
+  <div class="fv ta" lang="ta">யாமிருக்க பயமேன்.</div>
   <div class="fa"><div class="ta" lang="ta">ஆறுபடை வீடு</div><small>SIX SACRED ABODES OF LORD MURUGAN</small></div>
   <button class="cta" id="again">BEGIN THE JOURNEY AGAIN</button>
 </section>
@@ -413,10 +393,10 @@ const T=[
  {ta:'திருப்பரங்குன்றம்',en:'Thirupparankundram',loc:'Near Madurai, Tamil Nadu',pos:[28,7],img:'tpk',d:'tpk',scene:cave,
   desc:'A hill shrine near Madurai, associated with the marriage of Murugan and Deivanai.',
   fact:'The sanctum here is cut into the rock of the hill itself — a rock-cut cave temple.',hint:'Tap or swipe toward the cave'},
- {ta:'திருச்செந்தூர்',en:'Tiruchendur',loc:'Thoothukudi district, Tamil Nadu',pos:[28,39],img:'chen',d:'chen',scene:sea,
+ {ta:'திருச்செந்தூர்',en:'Tiruchendur',loc:'Thoothukudi district, Tamil Nadu',pos:[72,23],img:'chen',d:'chen',scene:sea,
   desc:'Murugan’s shrine on the seashore, associated with his victory over the asura Surapadman.',
   fact:'It is the only one of the six abodes on the seashore — the other five stand on hills.',hint:'Drag across the sea'},
- {ta:'பழனி',en:'Palani',loc:'Dindigul district, Tamil Nadu',pos:[72,23],img:'palani',d:'palani',scene:palani,
+ {ta:'பழனி',en:'Palani',loc:'Dindigul district, Tamil Nadu',pos:[28,39],img:'palani',d:'palani',scene:palani,
   desc:'A hilltop shrine where Murugan is worshipped as Dandayudhapani, the ascetic holding a staff.',
   fact:'Pilgrims can climb the steps, or ride a winch train or the ropeway up the hill.',hint:'Watch the rope car · or drag it'},
  {ta:'சுவாமிமலை',en:'Swamimalai',loc:'Near Kumbakonam, Tamil Nadu',pos:[72,55],img:'swami',d:'swami',
@@ -432,8 +412,9 @@ const T=[
   fact:'The name means “grove of ripe fruits”.',hint:'Brush the leaves · find the hidden path'}
 ];
 
-const ORDINALS=['முதலாம் படை வீடு','இரண்டாம் படை வீடு','மூன்றாம் படை வீடு','நான்காம் படை வீடு','ஐந்தாம் படை வீடு','ஆறாம் படை வீடு'];
 /* ============ UI: landing, journey map, temple view, final ============ */
+/* Tamil ordinals follow the journey position (index in T), so they always match the temple shown in that slot */
+const ORD=['முதலாம் படை வீடு','இரண்டாம் படை வீடு','மூன்றாம் படை வீடு','நான்காம் படை வீடு','ஐந்தாம் படை வீடு','ஆறாம் படை வீடு'];
 const explored=new Set();let cur=null,finShown=false,clean=[];
 
 (function landing(){
@@ -449,8 +430,8 @@ const explored=new Set();let cur=null,finShown=false,clean=[];
   let d=`M${pts[0]}`;for(let i=0;i<pts.length-1;i++){const m=[(pts[i][0]+pts[i+1][0])/2,(pts[i][1]+pts[i+1][1])/2];d+=`Q${pts[i]} ${m}`}d+=`L${pts[pts.length-1]}`;
   map.innerHTML=`<svg viewBox="0 0 100 200" preserveAspectRatio="none" aria-hidden="true"><path d="${d}" fill="none" stroke="#e0b45c" stroke-width="2.5" stroke-dasharray="2 7" stroke-linecap="round" vector-effect="non-scaling-stroke" opacity=".6"/></svg>`;
   T.forEach((t,i)=>{const b=document.createElement('button');b.className='node';b.id='n'+i;b.style.left=t.pos[0]+'%';b.style.top=t.pos[1]+'%';
-    b.setAttribute('aria-label',`${t.en}. Tap to explore.`);
-    b.innerHTML=`<img class="gm" alt="" decoding="async" src="${IMG[t.img].src}"><span class="nl"><em class="ord ta" lang="ta" aria-label="${ORDINALS[i]}">${ORDINALS[i]}</em><b class="ta" lang="ta">${t.ta}</b><i>${t.en}<em class="cm" aria-label="explored"> ✓</em></i></span>`;
+    b.setAttribute('aria-label',`Abode ${i+1} of 6: ${t.en}. Tap to explore.`);
+    b.innerHTML=`<img class="gm" alt="" decoding="async" src="${IMG[t.img].src}"><span class="nl"><span class="od ta" lang="ta">${ORD[i]}</span><b class="ta" lang="ta">${t.ta}</b><i>${t.en}<em class="cm" aria-label="explored"> ✓</em></i></span>`;
     b.onclick=e=>openT(i,b);map.append(b)});
   $('#fbtn').onclick=showFinal;
 })();
@@ -465,7 +446,7 @@ function updateProgress(){
 function openT(i,origin,rep){
   const t=T[i],v=$('#tv'),last=i===T.length-1;cur=i;rep?history.replaceState({v:'t'},''):history.pushState({v:'t'},'');
   v.className='scr';v.scrollTop=0;
-  v.innerHTML=`<div class="pg1"><div class="bar"><button class="bk" aria-label="Back to the journey">←</button><div class="bi"><div class="tv-ord ta" lang="ta">${ORDINALS[i]}</div><div class="ta tt" lang="ta">${t.ta}</div><div class="en">${t.en}</div></div><div class="bt"><button class="z" id="zo" aria-label="Zoom out">−</button><button class="z" id="zi" aria-label="Zoom in">+</button><button id="mu" aria-label="Mute or unmute the temple bell">${muted?'🔕':'🔔'}</button></div></div><div class="stage"><div class="hint">☝ ${t.hint}</div></div><div class="ctl" role="group" aria-label="Alternative controls"></div></div><section class="cont" aria-label="Continue"></section>`;
+  v.innerHTML=`<div class="pg1"><div class="bar"><button class="bk" aria-label="Back to the journey">←</button><div class="bi"><div class="ta tt" lang="ta">${t.ta}</div><div class="en">${t.en}</div></div><div class="bt"><button class="z" id="zo" aria-label="Zoom out">−</button><button class="z" id="zi" aria-label="Zoom in">+</button><button id="mu" aria-label="Mute or unmute the temple bell">${muted?'🔕':'🔔'}</button></div></div><div class="stage"><div class="hint">☝ ${t.hint}</div></div><div class="ctl" role="group" aria-label="Alternative controls"></div></div><section class="cont" aria-label="Continue"></section>`;
   v.style.display='flex';
   if(!RM&&origin){const r=origin.getBoundingClientRect(),x=r.left+r.width/2,y=r.top+34,R=Math.hypot(innerWidth,innerHeight);
     v.animate([{clipPath:`circle(0px at ${x}px ${y}px)`},{clipPath:`circle(${R}px at ${x}px ${y}px)`}],{duration:650,easing:'cubic-bezier(.2,.8,.2,1)'})}
@@ -474,8 +455,8 @@ function openT(i,origin,rep){
   const stg=$('.stage',v),hint=$('.hint',v);clean=[];const pre=new Image();pre.src=D[t.d];let arrived=false;
   const stopScene=()=>{clean.forEach(f=>f());clean.length=0;stg.onpointerdown=stg.onpointermove=stg.onpointerup=stg.onpointercancel=null};
   const done=()=>{explored.add(i);updateProgress();v.classList.add('viewing');
-    const nxt=i<T.length-1?['CONTINUE THE JOURNEY →','NEXT: '+T[i+1].en.toUpperCase()]:null;
-    $('.cont',v).innerHTML=`<div class="loc">📍 ${t.loc}</div><h2 class="ta" lang="ta">${t.ta}</h2><p>${t.desc}</p><p class="fact"><b>✦ DID YOU KNOW</b>${t.fact}</p>${nxt?`<button class="cta" id="nxt"><span>${nxt[0]}</span>${nxt[1]?`<small>${nxt[1]}</small>`:''}</button>`:''}<button class="cta sm ghost" id="rtj">RETURN TO JOURNEY</button>`;
+    const nxt=last?null:['CONTINUE THE JOURNEY →','NEXT: '+T[i+1].en.toUpperCase()];
+    $('.cont',v).innerHTML=`<div class="loc">📍 ${t.loc}</div><div class="ord ta" lang="ta">${ORD[i]}</div><h2 class="ta" lang="ta">${t.ta}</h2><p>${t.desc}</p><p class="fact"><b>✦ DID YOU KNOW</b>${t.fact}</p>${nxt?`<button class="cta" id="nxt"><span>${nxt[0]}</span>${nxt[1]?`<small>${nxt[1]}</small>`:''}</button>`:''}${last?'<button class="cta up" id="rtj">Return to the Journey</button>':'<button class="cta sm ghost" id="rtj">RETURN TO JOURNEY</button>'}`;
     const n=$('#nxt',v);if(n)n.onclick=()=>goNext(i+1);$('#rtj',v).onclick=()=>history.back()};
   const api={onClose:clean,arrived:false,
     touch(){hint.classList.add('gone')},
@@ -489,7 +470,7 @@ function openT(i,origin,rep){
 /* gopuram -> sanctum -> deity: approach, silhouette, full reveal, then a stable viewing state */
 function enter(st,v,t,api,done){
   const k=RM?.12:1,sn=document.createElement('div');sn.className='sn';
-  sn.innerHTML=`<div class="snin"><div class="snbg"></div><div class="zm"><img class="dt" alt="Lord Murugan, ${t.en}" src="${D[t.d]}"><div class="glow"></div><svg class="smk" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path d="M20 100C14 86 27 76 21 62S27 38 21 22"/><path d="M80 100C86 87 73 77 79 63S73 40 79 26"/></svg></div></div><div class="pil l"></div><div class="pil r"></div><i class="lamp a"></i><i class="lamp b"></i><div class="sill"></div><img class="gpz" alt="" src="${IMG[t.img].src}"><button class="dn" aria-label="Scroll down to continue the journey">↓ CONTINUE</button>`;
+  sn.innerHTML=`<div class="snin"><div class="snbg"></div><div class="zm"><img class="dt" alt="Lord Murugan, ${t.en}" src="${D[t.d]}"><div class="glow"></div></div></div><div class="pil l"></div><div class="pil r"></div><i class="lamp a"></i><i class="lamp b"></i><div class="sill"></div><img class="gpz" alt="" src="${IMG[t.img].src}"><button class="dn" aria-label="Scroll down to continue the journey">↓ CONTINUE</button>`;
   st.append(sn);const gz=$('.gpz',sn),si=$('.snin',sn),zm=$('.zm',sn),pl=$('.pil.l',sn),pr=$('.pil.r',sn);
   if(RM){gz.style.display='none';si.style.opacity=1}else{
     /* Cinematic forward approach: gopuram stays recognisable, scales gently toward viewer
@@ -535,8 +516,8 @@ function showFinal(){
   setTimeout(()=>{if(f.style.display==='flex')bell(.45)},RM?200:1000);
 }
 $('#fin').addEventListener('click',e=>{if(e.target.id!=='again')$('#fin').classList.add('skip')});
-$('#again').onclick=()=>{if(cur!==null)closeT();explored.clear();finShown=false;updateProgress();$('#fin').style.display='none';const l=$('#land');l.style.display='flex';l.classList.remove('out');$('#app').inert=true};
-addEventListener('popstate',()=>{if($('#fin').style.display==='flex')$('#fin').style.display='none';else if(cur!==null)closeT()});
+$('#again').onclick=()=>{const f=$('#fin');if(cur!==null)closeT();explored.clear();finShown=false;updateProgress();f.style.display='none';f.classList.remove('skip');f.scrollTop=0;scrollTo(0,0);const l=$('#land');l.style.display='flex';l.classList.remove('out');$('#app').inert=true;if(history.state&&history.state.v==='f')history.back()};
+addEventListener('popstate',()=>{if($('#fin').style.display==='flex')$('#fin').style.display='none';else if(cur!==null){const was=cur;closeT();if(was===T.length-1&&explored.size===T.length)setTimeout(()=>{const b=$('#fbtn');if(b.style.display!=='none')b.scrollIntoView({block:'center',behavior:RM?'auto':'smooth'})},80)}});
 addEventListener('keydown',e=>{if(e.key==='Escape'&&(cur!==null||$('#fin').style.display==='flex'))history.back()});
 updateProgress();
 </script>
